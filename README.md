@@ -1,1 +1,1 @@
-Yay! Hello class!
+Yay! Hello dynamic web development class!
