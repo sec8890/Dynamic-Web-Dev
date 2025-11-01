@@ -1,1 +1,1 @@
-Yay! Class!
+Yay! Hello class!
