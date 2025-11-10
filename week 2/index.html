@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Feed Me Data!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <h1>The Data Collector!</h1>
+
+    <p>Give me all of your data! </p>
+
+    <form method="post" action="/submitdata">
+        <input type="textarea" placeholder="Enter your favorite personal data!" name="answer" />
+    </form>
+    <br>
+    <form method="post" action="/submitnext">
+        <input type="textarea" placeholder="Is that your best personal data?" name="next" />
+    </form>
+    <br>
+     <form method="post" action="/submitfinal">
+        <input type="textarea" placeholder="Come on, you have data more personal than that!" name="final" />
+    </form>
+
+
+    <script src="index.js" ></script>
+
+</body>
+
+</html>
