@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Data Collector</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #000000;
+      --accent: #ccff69;
+      --text-main: #f5f5f5;
+      --text-muted: #b5b5b5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      padding: 3rem 3.5rem;
+    }
+
+    .title-block {
+      margin-bottom: 3.5rem;
+    }
+
+    .title-small {
+      font-family: "Michroma", system-ui, sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .title-large {
+      font-family: "Michroma", system-ui, sans-serif;
+      font-size: 4.4rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .form-section {
+      max-width: 900px;
+      margin-bottom: 4rem;
+    }
+
+    .pill-input {
+      background: var(--accent);
+      border-radius: 999px;
+      border: none;
+      padding: 1.2rem 2.5rem;
+      font-size: 1.6rem;
+      font-family: "Inter", system-ui, sans-serif;
+      width: 100%;
+      outline: none;
+      color: #222;
+      margin-bottom: 2rem;
+    }
+
+    .pill-textarea {
+      background: var(--accent);
+      border-radius: 999px;
+      border: none;
+      padding: 1.8rem 2.5rem;
+      font-size: 1.8rem;
+      font-family: "Inter", system-ui, sans-serif;
+      width: 100%;
+      outline: none;
+      color: #222;
+      resize: none;
+      min-height: 160px;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+    }
+
+    .pill-input::placeholder,
+    .pill-textarea::placeholder {
+      color: #222;
+      opacity: 0.8;
+    }
+
+    .submit-btn {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-family: "Michroma", system-ui, sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.6rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .posts-title {
+      font-family: "Michroma", system-ui, sans-serif;
+      font-size: 2.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .posts-wrapper {
+      margin-top: 1rem;
+      max-width: 900px;
+    }
+
+    .empty-state {
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+    }
+
+    .post {
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+    }
+
+    .post-name {
+      font-weight: 600;
+      color: var(--accent);
+      margin-right: 0.5rem;
+    }
+
+    .post-time {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="title-block">
+    <div class="title-small">THE</div>
+    <div class="title-large">DATA COLLECTOR</div>
+  </header>
+
+  <section class="form-section">
+    <form action="/submit" method="POST">
+      <input
+        type="text"
+        name="name"
+        class="pill-input"
+        placeholder="Name"
+      />
+
+      <textarea
+        name="message"
+        class="pill-textarea"
+        placeholder="Message"
+        required
+      ></textarea>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </section>
+
+  <section class="posts-section">
+    <h2 class="posts-title">Posts</h2>
+
+    <div class="posts-wrapper">
+      <% if (entries.length === 0) { %>
+        <p class="empty-state">No posts yet. Feed the collector.</p>
+      <% } else { %>
+        <% entries.forEach(function(entry) { %>
+          <div class="post">
+            <span class="post-name"><%= entry.name %>:</span>
+            <span class="post-message"><%= entry.message %></span>
+            <span class="post-time"><%= entry.time %></span>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </section>
+</body>
+</html>
